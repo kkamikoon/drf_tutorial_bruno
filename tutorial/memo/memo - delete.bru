@@ -1,0 +1,15 @@
+meta {
+  name: memo - delete
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{url}}/memos/1
+  body: none
+  auth: none
+}
+
+headers {
+  X-CSRFToken: {{x-csrftoken}}
+}

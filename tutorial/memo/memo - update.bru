@@ -1,0 +1,21 @@
+meta {
+  name: memo - update
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{url}}/memos/1
+  body: json
+  auth: none
+}
+
+headers {
+  X-CSRFToken: {{x-csrftoken}}
+}
+
+body:json {
+  {
+    "name": "MEMO TEST 2221"
+  }
+}
