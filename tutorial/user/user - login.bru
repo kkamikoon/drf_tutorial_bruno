@@ -10,9 +10,22 @@ post {
   auth: none
 }
 
+headers {
+  X-CSRFToken: {{x-csrftoken}}
+}
+
 body:json {
   {
     "username": "user1",
     "password": "password1"
   }
+}
+
+script:post-response {
+  const header = res.getHeader("set-cookie")?.[0];
+  const csrftoken = header.substring(
+    header.indexOf("=") + 1,
+    header.indexOf(";")
+  );
+  bru.setEnvVar("x-csrftoken", decodeURIComponent(csrftoken));
 }
